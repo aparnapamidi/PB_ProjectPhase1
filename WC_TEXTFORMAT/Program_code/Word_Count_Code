@@ -1,0 +1,17 @@
+Scala commmands:
+
+CMD1: The command to start spark
+./bin/spark-shell
+
+CMD2: the command to set the input file for performing word count 
+
+scala> val inputfile = sc.textFile("/home/aparna/Downloads/RonaldoTweets.txt")
+ 
+CMD3: map reduce command with delimiter as space
+scala> val c2=inputfile.flatMap(line=>line.split(" ")).map(word=>(word,1)).reduceByKey(_+_)
+
+CMD4: To cache datasets in memory for speedy results
+scala> c2.cache()
+
+CMD5: To save the output as text file
+scala> c2.saveAsTextFile("/home/aparna/Downloads/projects/wordcounttxt")
